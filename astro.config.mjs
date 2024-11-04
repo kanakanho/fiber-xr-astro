@@ -1,6 +1,6 @@
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
-import expressiveCode from "astro-expressive-code";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 // @ts-check
 import { defineConfig } from "astro/config";
 
@@ -8,7 +8,6 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   integrations: [
     react(),
-    expressiveCode(),
     partytown({
       config: {
         forward: ["dataLayer.push"],
@@ -29,6 +28,7 @@ export default defineConfig({
     },
   },
   vite: {
+    plugins: [basicSsl()],
     css: {
       preprocessorOptions: {
         scss: {
