@@ -1,14 +1,20 @@
-import useCameraPosition from "@/hooks/useCameraPosition";
+import useFetchImageInfos from "@/hooks/useFetchImagesInfo";
 import type { ReactElement } from "react";
+import type { Vector3 } from "three";
+import XRImage from "./xr_image/XRImage";
 
-const XRIndex = (): ReactElement => {
-  const [positionRef, quaternionRef] = useCameraPosition();
+type Props = {
+  baiusLocation: Vector3;
+};
 
+const XRIndex = ({ baiusLocation }: Props): ReactElement => {
+  const imageInfos = useFetchImageInfos({ baiusLocation });
   return (
-    <mesh pointerEventsType={{ deny: "grab" }} position={[0, 1, 0]}>
-      <boxGeometry />
-      <meshBasicMaterial color="red" />
-    </mesh>
+    <>
+      {imageInfos.map((imageInfo) => (
+        <XRImage key={imageInfo.id} imageInfo={imageInfo} />
+      ))}
+    </>
   );
 };
 

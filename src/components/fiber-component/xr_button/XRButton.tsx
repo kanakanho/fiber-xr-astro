@@ -4,12 +4,18 @@ import styles from "./XRButton.module.scss";
 
 type Props = {
   store: XRStore;
+  setIsImmersive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const XRButton = ({ store }: Props): ReactElement => {
+const XRButton = ({ store, setIsImmersive }: Props): ReactElement => {
+  const enterAR = () => {
+    store.enterAR();
+    setIsImmersive(true);
+  };
+
   return (
     <div className={styles.xrButtonContainer}>
-      <button type="button" className={styles.xrButton} onClick={() => store.enterAR()}>
+      <button type="button" className={styles.xrButton} onClick={() => enterAR()}>
         Enter AR
       </button>
     </div>
