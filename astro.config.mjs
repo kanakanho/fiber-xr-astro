@@ -1,8 +1,12 @@
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import webmanifest from "astro-webmanifest";
 // @ts-check
 import { defineConfig } from "astro/config";
+import serviceWorker from "astrojs-service-worker";
+
+const startUrl = import.meta.env.START_URL | "";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +16,17 @@ export default defineConfig({
       config: {
         forward: ["dataLayer.push"],
       },
+    }),
+    serviceWorker(),
+    webmanifest({
+      name: "fiber-xr-astro",
+      icon: "favicon.svg",
+      short_name: "fiber-xr-astro",
+      description: "fiber-xr-astro",
+      start_url: startUrl,
+      theme_color: "#333333",
+      background_color: "#ffffff",
+      display: "standalone",
     }),
   ],
   markdown: {
