@@ -6,8 +6,6 @@ import webmanifest from "astro-webmanifest";
 import { defineConfig } from "astro/config";
 import serviceWorker from "astrojs-service-worker";
 
-const startUrl = import.meta.env.START_URL | "";
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -23,7 +21,7 @@ export default defineConfig({
       icon: "favicon.svg",
       short_name: "fiber-xr-astro",
       description: "fiber-xr-astro",
-      start_url: startUrl,
+      start_url: "/",
       theme_color: "#333333",
       background_color: "#ffffff",
       display: "standalone",
