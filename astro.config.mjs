@@ -18,7 +18,7 @@ export default defineConfig({
     serviceWorker(),
     webmanifest({
       name: "fiber-xr-astro",
-      icon: "favicon.svg",
+      icon: "public/favicon.svg",
       short_name: "fiber-xr-astro",
       description: "fiber-xr-astro",
       start_url: "/",
